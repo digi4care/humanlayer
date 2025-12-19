@@ -4,12 +4,14 @@ set -euo pipefail
 usage() {
   cat <<'EOF'
 Usage:
-  hack/docker_build.sh <ubuntu|debian|arch> -- <command>
+  hack/docker_build.sh <ubuntu|debian|arch|fedora|opensuse> -- <command>
 
 Examples:
   hack/docker_build.sh ubuntu -- make setup
   hack/docker_build.sh debian -- make check-test
   hack/docker_build.sh arch -- make codelayer-nightly-bundle-linux
+  hack/docker_build.sh fedora -- make codelayer-nightly-bundle-linux
+  hack/docker_build.sh opensuse -- make codelayer-nightly-bundle-linux
 
 Notes:
 - Artifacts will be written into your working tree (bind-mounted into the container).
@@ -35,7 +37,7 @@ shift
 SERVICE="build-${DISTRO}"
 
 case "$DISTRO" in
-  ubuntu|debian|arch)
+  ubuntu|debian|arch|fedora|opensuse)
     ;;
   *)
     echo "Unknown distro: $DISTRO" >&2

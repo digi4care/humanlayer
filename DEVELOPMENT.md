@@ -204,6 +204,12 @@ bash hack/docker_build.sh debian -- make check-test
 
 # Arch Linux
 bash hack/docker_build.sh arch -- make codelayer-nightly-bundle-linux
+
+# Fedora
+bash hack/docker_build.sh fedora -- make codelayer-nightly-bundle-linux
+
+# openSUSE (Tumbleweed)
+bash hack/docker_build.sh opensuse -- make codelayer-nightly-bundle-linux
 ```
 
 ### Python Development

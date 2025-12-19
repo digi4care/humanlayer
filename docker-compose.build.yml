@@ -91,3 +91,63 @@ services:
       NO_STRIP: ${NO_STRIP:-1}
       ARCH: ${ARCH:-x86_64}
       APPIMAGE_EXTRACT_AND_RUN: ${APPIMAGE_EXTRACT_AND_RUN:-1}
+
+  build-fedora:
+    build:
+      context: .
+      dockerfile: docker/build/fedora/Dockerfile
+      args:
+        LOCAL_UID: ${LOCAL_UID:-1000}
+        LOCAL_GID: ${LOCAL_GID:-1000}
+        NODE_VERSION: ${NODE_VERSION:-22.0.0}
+        GO_VERSION: ${GO_VERSION:-1.24.0}
+        BUN_VERSION: ${BUN_VERSION:-1.2.23}
+        RUST_TOOLCHAIN: ${RUST_TOOLCHAIN:-stable}
+    working_dir: /workspace
+    volumes:
+      - .:/workspace
+      - ./.docker-cache/tauri:/opt/cache
+      - ./.docker-cache/cargo-registry:/opt/cargo/registry
+      - ./.docker-cache/cargo-git:/opt/cargo/git
+      - ./.docker-cache/go-pkg-mod:/opt/go/pkg/mod
+      - ./.docker-cache/bun-cache:/opt/bun/install/cache
+    environment:
+      HUMANLAYER_SKIP_PLATFORM_DEPS: "1"
+      XDG_CACHE_HOME: /opt/cache
+      CARGO_HOME: /opt/cargo
+      RUSTUP_HOME: /opt/rustup
+      GOPATH: /opt/go
+      BUN_INSTALL: /opt/bun
+      NO_STRIP: ${NO_STRIP:-1}
+      ARCH: ${ARCH:-x86_64}
+      APPIMAGE_EXTRACT_AND_RUN: ${APPIMAGE_EXTRACT_AND_RUN:-1}
+
+  build-opensuse:
+    build:
+      context: .
+      dockerfile: docker/build/opensuse/Dockerfile
+      args:
+        LOCAL_UID: ${LOCAL_UID:-1000}
+        LOCAL_GID: ${LOCAL_GID:-1000}
+        NODE_VERSION: ${NODE_VERSION:-22.0.0}
+        GO_VERSION: ${GO_VERSION:-1.24.0}
+        BUN_VERSION: ${BUN_VERSION:-1.2.23}
+        RUST_TOOLCHAIN: ${RUST_TOOLCHAIN:-stable}
+    working_dir: /workspace
+    volumes:
+      - .:/workspace
+      - ./.docker-cache/tauri:/opt/cache
+      - ./.docker-cache/cargo-registry:/opt/cargo/registry
+      - ./.docker-cache/cargo-git:/opt/cargo/git
+      - ./.docker-cache/go-pkg-mod:/opt/go/pkg/mod
+      - ./.docker-cache/bun-cache:/opt/bun/install/cache
+    environment:
+      HUMANLAYER_SKIP_PLATFORM_DEPS: "1"
+      XDG_CACHE_HOME: /opt/cache
+      CARGO_HOME: /opt/cargo
+      RUSTUP_HOME: /opt/rustup
+      GOPATH: /opt/go
+      BUN_INSTALL: /opt/bun
+      NO_STRIP: ${NO_STRIP:-1}
+      ARCH: ${ARCH:-x86_64}
+      APPIMAGE_EXTRACT_AND_RUN: ${APPIMAGE_EXTRACT_AND_RUN:-1}
