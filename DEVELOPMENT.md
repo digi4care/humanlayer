@@ -191,6 +191,21 @@ make check             # Run linting and type checking
 make test              # Run all test suites
 ```
 
+### Reproducible Linux builds (Docker build matrix)
+
+To test Linux build/packaging targets reproducibly across common distros, use the Docker build matrix.
+
+```bash
+# Ubuntu 24.04
+bash hack/docker_build.sh ubuntu -- make setup
+
+# Debian 12
+bash hack/docker_build.sh debian -- make check-test
+
+# Arch Linux
+bash hack/docker_build.sh arch -- make codelayer-nightly-bundle-linux
+```
+
 ### Python Development
 ```bash
 make check-py          # Python linting and type checking

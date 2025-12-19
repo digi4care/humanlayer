@@ -10,6 +10,10 @@ case "$(uname -s)" in
             # Note: apt packages are handled by GitHub Actions cache
             # This is a placeholder for any additional Linux setup
         else
+            if [ -n "${HUMANLAYER_SKIP_PLATFORM_DEPS:-}" ]; then
+                echo "📦 Skipping platform dependency installation (HUMANLAYER_SKIP_PLATFORM_DEPS=1)"
+                exit 0
+            fi
             echo "📦 Checking Linux-specific dependencies for Tauri..."
 
             # Detect Linux distribution

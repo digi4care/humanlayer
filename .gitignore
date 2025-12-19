@@ -214,7 +214,8 @@ coverage
 out/
 build
 dist
-
+!docker/build/
+!docker/build/**
 
 # Debug
 npm-debug.log*
@@ -224,3 +225,5 @@ yarn-error.log*
 # Misc
 .DS_Store
 *.pem
+
+.docker-cache/
