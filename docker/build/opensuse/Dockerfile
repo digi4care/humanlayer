@@ -20,6 +20,7 @@ RUN zypper -n ref \
     unzip \
     file \
     bash \
+    xdg-utils \
     pkg-config \
     cmake \
     python3 \

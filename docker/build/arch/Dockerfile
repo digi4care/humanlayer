@@ -19,6 +19,7 @@ RUN pacman -Syu --noconfirm \
     xz \
     unzip \
     file \
+    xdg-utils \
     base-devel \
     clang \
     cmake \

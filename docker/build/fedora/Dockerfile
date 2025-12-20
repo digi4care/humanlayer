@@ -17,6 +17,7 @@ RUN dnf -y update \
     unzip \
     file \
     bash \
+    xdg-utils \
     pkgconf-pkg-config \
     cmake \
     python3 \

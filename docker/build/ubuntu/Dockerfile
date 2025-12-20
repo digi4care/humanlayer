@@ -19,6 +19,7 @@ RUN apt-get update \
     unzip \
     file \
     bash \
+    xdg-utils \
     pkg-config \
     build-essential \
     clang \
