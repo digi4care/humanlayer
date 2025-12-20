@@ -12,6 +12,7 @@ RUN pacman -Syu --noconfirm \
     ca-certificates \
     curl \
     wget \
+    bash \
     git \
     tar \
     gzip \
@@ -20,7 +21,6 @@ RUN pacman -Syu --noconfirm \
     file \
     base-devel \
     clang \
-    libclang \
     cmake \
     python \
     pkgconf \
@@ -35,6 +35,8 @@ RUN pacman -Syu --noconfirm \
     webkit2gtk-4.1 \
     libappindicator-gtk3 \
     librsvg \
+    appmenu-gtk-module \
+    xdotool \
   && pacman -Scc --noconfirm
 
 # Non-root user that matches the host UID/GID (for correct file ownership on bind mounts)
