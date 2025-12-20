@@ -39,6 +39,7 @@ RUN pacman -Syu --noconfirm \
     librsvg \
     appmenu-gtk-module \
     xdotool \
+  && mkdir -p "$(pkg-config --variable=gdk_pixbuf_moduledir gdk-pixbuf-2.0)" \
   && pacman -Scc --noconfirm
 
 # Non-root user that matches the host UID/GID (for correct file ownership on bind mounts)
