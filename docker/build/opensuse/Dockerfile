@@ -21,6 +21,7 @@ RUN zypper -n ref \
     file \
     bash \
     xdg-utils \
+    libfuse2 \
     pkg-config \
     cmake \
     python3 \

@@ -20,6 +20,7 @@ RUN apt-get update \
     file \
     bash \
     xdg-utils \
+    libfuse2 \
     pkg-config \
     build-essential \
     clang \

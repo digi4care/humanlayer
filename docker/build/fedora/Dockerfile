@@ -18,6 +18,7 @@ RUN dnf -y update \
     file \
     bash \
     xdg-utils \
+    fuse-libs \
     pkgconf-pkg-config \
     cmake \
     python3 \

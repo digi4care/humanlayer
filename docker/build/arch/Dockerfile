@@ -20,6 +20,7 @@ RUN pacman -Syu --noconfirm \
     unzip \
     file \
     xdg-utils \
+    fuse2 \
     base-devel \
     clang \
     cmake \
