@@ -247,7 +247,7 @@ codelayer-nightly-bundle-linux:
 	@echo "Building Tauri app with nightly config (linux)..."
 	@# Use trap to ensure icons are restored even if build fails
 	cd humanlayer-wui && ( \
-		VITE_APP_VERSION="$(BUILD_VERSION)" NO_STRIP=1 bun run tauri build --config src-tauri/tauri.nightly.conf.json; \
+		VITE_APP_VERSION="$(BUILD_VERSION)" NO_STRIP=1 APPIMAGE_EXTRACT_AND_RUN=1 bun run tauri build --config src-tauri/tauri.nightly.conf.json; \
 		EXIT_CODE=$$?; \
 		echo "Restoring original icons..."; \
 		cd src-tauri && rm -rf icons && cp -r icons-original icons && rm -rf icons-original; \
