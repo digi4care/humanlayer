@@ -158,10 +158,39 @@ command_exists() {
 ensure_golangci_lint() {
     if ! command_exists golangci-lint; then
         echo "  Installing golangci-lint..."
-        brew install golangci-lint >/dev/null 2>&1 || {
+        local tmp_file
+        tmp_file=$(mktemp)
+
+        if command_exists go; then
+            local version
+            version="${GOLANGCI_LINT_VERSION:-v2.1.6}"
+
+            if go install "github.com/golangci/golangci-lint/v2/cmd/golangci-lint@${version}" >"$tmp_file" 2>&1; then
+                rm -f "$tmp_file"
+                return 0
+            fi
+
             echo "  ${RED}Failed to install golangci-lint${NC}"
+            cat "$tmp_file"
+            rm -f "$tmp_file"
             return 1
-        }
+        fi
+
+        if command_exists brew; then
+            if brew install golangci-lint >"$tmp_file" 2>&1; then
+                rm -f "$tmp_file"
+                return 0
+            fi
+
+            echo "  ${RED}Failed to install golangci-lint${NC}"
+            cat "$tmp_file"
+            rm -f "$tmp_file"
+            return 1
+        fi
+
+        echo "  ${RED}Failed to install golangci-lint (need go or brew)${NC}"
+        rm -f "$tmp_file"
+        return 1
     fi
 }
 
